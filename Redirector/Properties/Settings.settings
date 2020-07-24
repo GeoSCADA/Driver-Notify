@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Redirector.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AccountSID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ACc88cb4beb136cc7b1381fec21b1013fb</Value>
+    </Setting>
+    <Setting Name="TwilioFlowId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://studio.twilio.com/v1/Flows/FWa3d1f18f518c70a76cd5a70bc9fcf1da/Executions</Value>
+    </Setting>
+    <Setting Name="FromNumber" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">+447588722325</Value>
+    </Setting>
+    <Setting Name="WebHostName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">*</Value>
+    </Setting>
+    <Setting Name="WebPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">8080</Value>
+    </Setting>
+    <Setting Name="WebProtocol" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

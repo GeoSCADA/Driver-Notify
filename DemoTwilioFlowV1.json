@@ -1,0 +1,308 @@
+{
+  "description": "Send Alarm From Geo SCADA V1",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "InitialState",
+      "properties": {
+        "offset": {
+          "x": -360,
+          "y": 10
+        },
+        "flow_url": "https://webhooks.twilio.com/v1/Accounts/<<YourAccount>>/Flows/<<ThisFlowID>>"
+      },
+      "transitions": [
+        {
+          "event": "incomingMessage",
+          "conditions": [],
+          "next": null,
+          "uuid": "fe0cc8ff-a170-441d-a1a5-9fd1280bbdc7"
+        },
+        {
+          "event": "incomingCall",
+          "conditions": [],
+          "next": null,
+          "uuid": "a09ca829-1334-4a84-bfee-41b9fc45c5ce"
+        },
+        {
+          "event": "incomingRequest",
+          "conditions": [],
+          "next": "FF368603c1b7258637bce3b2c67ae6d3d1",
+          "uuid": "ab15e21a-c3da-49c1-af00-18bdf4397116"
+        }
+      ],
+      "sid": "FFdf04ff708f811a29a276875a1ee8fca1"
+    },
+    {
+      "name": "Announce_Alarm",
+      "type": "SayPlay",
+      "properties": {
+        "offset": {
+          "x": -310,
+          "y": 470
+        },
+        "say": "Telemetry Alarm. {{flow.data.mymessage}} .",
+        "play": null,
+        "voice": "alice",
+        "language": "en-US",
+        "loop": 1,
+        "digits": null
+      },
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": "FF001340ade5c3c5992e7c3843bae95d83",
+          "uuid": "ae0684ee-f209-438f-83e1-ce578eef6929"
+        }
+      ],
+      "sid": "FF2f11262d9c776c80642923115eca056f"
+    },
+    {
+      "name": "Dial_Outgoing_Number",
+      "type": "Dial",
+      "properties": {
+        "offset": {
+          "x": -330,
+          "y": 230
+        },
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "record": false,
+        "timeout": 60
+      },
+      "transitions": [
+        {
+          "event": "answered",
+          "conditions": [],
+          "next": "FF2f11262d9c776c80642923115eca056f",
+          "uuid": "f92a8c79-a2cd-4826-b2eb-4dc652b46bb1"
+        },
+        {
+          "event": "answeredByMachine",
+          "conditions": [],
+          "next": null,
+          "uuid": "3b5168e9-1d18-4072-aa16-d94f15f651bb"
+        },
+        {
+          "event": "busy",
+          "conditions": [],
+          "next": null,
+          "uuid": "1edea455-cf8c-4bd3-b187-755dd19830b4"
+        },
+        {
+          "event": "noAnswer",
+          "conditions": [],
+          "next": null,
+          "uuid": "200f0d46-884f-4499-a48e-b84cab17c915"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": null,
+          "uuid": "efbf9d3c-9dcd-4eb2-b515-4cf0379c9d0b"
+        }
+      ],
+      "sid": "FF368603c1b7258637bce3b2c67ae6d3d1"
+    },
+    {
+      "name": "Get_User_Number",
+      "type": "Gather",
+      "properties": {
+        "offset": {
+          "x": -290,
+          "y": 720
+        },
+        "timeout": 10,
+        "finish_on_key": "#",
+        "stop_gather": true,
+        "number_of_digits": 7,
+        "save_response_as": null,
+        "say": "Enter your user number to request alarm acknowledge",
+        "play": null,
+        "voice": "alice",
+        "language": "en-US",
+        "loop": 1,
+        "hints": null,
+        "gather_language": "en-US",
+        "speech_timeout": null,
+        "speech_model": null,
+        "profanity_filter": null
+      },
+      "transitions": [
+        {
+          "event": "keypress",
+          "conditions": [],
+          "next": "FFfe46ed9bb4e4546700c360761c469166",
+          "uuid": "37397c07-03f9-4f13-92c4-31b35b4f2c85"
+        },
+        {
+          "event": "speech",
+          "conditions": [],
+          "next": null,
+          "uuid": "0211bc37-2138-43f7-820c-7972a9e00389"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FF001340ade5c3c5992e7c3843bae95d83",
+          "uuid": "bd08e31a-305b-4859-865b-ab9694e73352"
+        }
+      ],
+      "sid": "FF001340ade5c3c5992e7c3843bae95d83"
+    },
+    {
+      "name": "Get_PIN_Number",
+      "type": "Gather",
+      "properties": {
+        "offset": {
+          "x": 390,
+          "y": 220
+        },
+        "timeout": 10,
+        "finish_on_key": "#",
+        "stop_gather": true,
+        "number_of_digits": 5,
+        "save_response_as": null,
+        "say": "Enter your PIN",
+        "play": null,
+        "voice": "alice",
+        "language": "en-US",
+        "loop": 1,
+        "hints": null,
+        "gather_language": "en-US",
+        "speech_timeout": null,
+        "speech_model": null,
+        "profanity_filter": null
+      },
+      "transitions": [
+        {
+          "event": "keypress",
+          "conditions": [],
+          "next": "FF8ca68255b9a0adfe6f3f87611bc3612c",
+          "uuid": "5d447545-6dd3-464f-a3a6-3e8fb5574891"
+        },
+        {
+          "event": "speech",
+          "conditions": [],
+          "next": null,
+          "uuid": "85b1c60d-b17a-47cf-9d4b-174fb503696e"
+        },
+        {
+          "event": "timeout",
+          "conditions": [],
+          "next": "FFfe46ed9bb4e4546700c360761c469166",
+          "uuid": "2cea59a8-a5c9-4850-b384-6e86d8f4053f"
+        }
+      ],
+      "sid": "FFfe46ed9bb4e4546700c360761c469166"
+    },
+    {
+      "name": "Call_Web_Service_to_Acknowledge",
+      "type": "Webhook",
+      "properties": {
+        "offset": {
+          "x": 370,
+          "y": 480
+        },
+        "method": "GET",
+        "url": "http://<<YOUR.SERVICE.URL>>.com:8081/TwilioRequest/",
+        "body": "body=nothing",
+        "timeout": null,
+        "parameters": [
+          {
+            "key": "pin",
+            "value": "{{widgets.Get_PIN_Number.Digits}}"
+          },
+          {
+            "key": "type",
+            "value": "ACKALARM"
+          },
+          {
+            "key": "userid",
+            "value": "{{widgets.Get_User_Number.Digits}}"
+          },
+          {
+            "key": "phone",
+            "value": "{{widgets.Dial_Outgoing_Number.To}}"
+          },
+          {
+            "key": "message",
+            "value": "{{flow.data.mymessage}}"
+          },
+          {
+            "key": "cookie",
+            "value": "{{flow.data.alarmcookie}}"
+          }
+        ],
+        "save_response_as": null,
+        "content_type": "application/x-www-form-urlencoded;charset=utf-8"
+      },
+      "transitions": [
+        {
+          "event": "success",
+          "conditions": [],
+          "next": "FFd0aa0dd854e4e93580a8bcc4c88ecc94",
+          "uuid": "3aa91a41-0b69-4aa2-83ca-36adae4873e7"
+        },
+        {
+          "event": "failed",
+          "conditions": [],
+          "next": "FF137f2b81250d183a3b54bb501eeb0159",
+          "uuid": "914178e5-668f-445f-b1d4-d1d4ee8d0a43"
+        }
+      ],
+      "sid": "FF8ca68255b9a0adfe6f3f87611bc3612c"
+    },
+    {
+      "name": "Say_Hang_Up",
+      "type": "SayPlay",
+      "properties": {
+        "offset": {
+          "x": 270,
+          "y": 780
+        },
+        "say": "Thank you. Please hang up.",
+        "play": null,
+        "voice": "alice",
+        "language": "en-US",
+        "loop": 1,
+        "digits": null
+      },
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": null,
+          "uuid": "fb9ebcda-8379-4cf4-b013-8107130a9d55"
+        }
+      ],
+      "sid": "FFd0aa0dd854e4e93580a8bcc4c88ecc94"
+    },
+    {
+      "name": "Say_Error_Hang_Up",
+      "type": "SayPlay",
+      "properties": {
+        "offset": {
+          "x": 630,
+          "y": 780
+        },
+        "say": "Error. Please hang up.",
+        "play": null,
+        "voice": "alice",
+        "language": "en-US",
+        "loop": 1,
+        "digits": null
+      },
+      "transitions": [
+        {
+          "event": "audioComplete",
+          "conditions": [],
+          "next": null,
+          "uuid": "779a3b62-101a-4147-a601-ffc798677e5c"
+        }
+      ],
+      "sid": "FF137f2b81250d183a3b54bb501eeb0159"
+    }
+  ]
+}
