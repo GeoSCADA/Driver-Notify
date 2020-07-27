@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="28d4ad2d-e174-45c5-b7f7-475f0dd88a15" Name="RedirectorInstaller" Language="1033" Version="1.0.0.0" 
+            Manufacturer="Schneider Electric" UpgradeCode="18ddcd57-1f62-4b15-9c92-ec69ae80ab32">
+    <Package InstallerVersion="200" Compressed="yes" InstallPrivileges="elevated" InstallScope="perMachine" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Redirector Web Service is already installed." />
+    <Media Id='1' Cabinet='RWS.cab' EmbedCab='yes' />
+    <Feature Id='Complete' Level='1' ConfigurableDirectory='INSTALLDIR'>
+      <ComponentRef Id="SERVICEPROCESS" />
+      <ComponentRef Id="SERVICEDLLS" />
+    </Feature>
+
+    <UI>
+    </UI>
+    
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="SchneiderElectricFolder" Name="Schneider Electric">
+          <Directory Id="INSTALLDIR" Name="Redirector Web Service">
+            <Component Id="SERVICEDLLS" Guid="598AEE65-5195-4F43-B758-A9B27D29FAEC">
+              <File Id="Redirector.EXE.CONFIG" Name="Redirector.exe.config" Source="..\Redirector\bin\Release\Redirector.exe.config" />
+            </Component>
+            <Component Id="SERVICEPROCESS" Guid="911D59D3-B29F-458E-BBC5-8DF32FEE5797">
+              <File Id="REDIRECTOR.EXE" Name="Redirector.exe" Source="..\Redirector\bin\Release\Redirector.exe" />
+              <ServiceInstall Id="ServiceInstaller" Type="ownProcess" Vital="yes"
+                      Name="RedirectorService" DisplayName="Redirector Web Service"
+                      Description="Redirector web server for Twilio" Start="auto"
+                      Account="LocalSystem" ErrorControl="ignore" Interactive="no" />
+              <ServiceControl Id="ServiceInstaller" Name="RedirectorService"
+                      Remove="uninstall" Stop="uninstall" Wait="yes" Start="install" />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Product>
+</Wix>

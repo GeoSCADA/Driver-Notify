@@ -25,33 +25,6 @@ namespace Redirector.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ACc88cb4beb136cc7b1381fec21b1013fb")]
-        public string AccountSID {
-            get {
-                return ((string)(this["AccountSID"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://studio.twilio.com/v1/Flows/FWa3d1f18f518c70a76cd5a70bc9fcf1da/Executions")]
-        public string TwilioFlowId {
-            get {
-                return ((string)(this["TwilioFlowId"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("+447588722325")]
-        public string FromNumber {
-            get {
-                return ((string)(this["FromNumber"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("*")]
         public string WebHostName {
             get {
@@ -62,9 +35,9 @@ namespace Redirector.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("8080")]
-        public int WebPort {
+        public int DriverWebPort {
             get {
-                return ((int)(this["WebPort"]));
+                return ((int)(this["DriverWebPort"]));
             }
         }
         
@@ -74,6 +47,24 @@ namespace Redirector.Properties {
         public string WebProtocol {
             get {
                 return ((string)(this["WebProtocol"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\ProgramData\\Schneider Electric\\RedirectorServer\\")]
+        public string WebLogPath {
+            get {
+                return ((string)(this["WebLogPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8080")]
+        public int TwilioWebPort {
+            get {
+                return ((int)(this["TwilioWebPort"]));
             }
         }
     }

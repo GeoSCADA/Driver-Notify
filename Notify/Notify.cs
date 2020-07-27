@@ -216,14 +216,40 @@ namespace Notify
 		[Enum(new String[] { "Twilio Voice and SMS", "Microsoft Flow" })]
 		public Byte ServiceType = 0;
 
-		[Label("API Key", 7, 1)]
+		// The following items should be visible in a section, dependent on the Service Type
+		// These parameters are required by Twilio
+		// Account SID is used by Twilio to identify the account owner
+		[Label("Account SID", 7, 1)]
+		[ConfigField("AccountSID",
+					 "The account 'SID' required by the Redirector to the Twilio service.",
+					 7, 2, OPCProperty.Base + 55, Length = 80)]
+		public string AccountSID;
+
+		// The Account Authorization token is used for authentication
+		// It is viewable from the Twilio web interface
+		[Label("API Key", 8, 1)]
 		[ConfigField("APIKey",
-					 "The API key required by the redirector service. Leave blank if unused.",
-					 7, 2, OPCProperty.Base + 54, Length = 80)]
+					 "The API key required by the Redirector to the Twilio service.",
+					 8, 2, OPCProperty.Base + 54, Length = 80)]
 		public string APIKey;
 
-		[Label("Allow Acknowledge", 8, 1)]
-		[ConfigField("AllowAck", "Controls whether alarms can be acknowledged.", 8, 2, OPCProperty.Base + 18)]
+		// The Flow ID is used to identify the flow we want to run.
+		// You will need to replicate and/or customise the example flow in Twilio (see the ReadMe pdf linked with this code)
+		// This flow is a message sender with optional with acknowledgement from the user		[Label("Flow ID", 9, 1)]
+		[ConfigField("FlowID",
+					 "The Flow ID/address (must begin https://studio.twilio.com/) required by the Redirector to the Twilio service.",
+					 9, 2, OPCProperty.Base + 56, Length = 80)]
+		public string FlowID;
+
+		// This is a phone number used by Twilio to send messages. You will need to select and lease this number from your Twilio account
+		[Label("From Number", 10, 1)]
+		[ConfigField("FromNumber",
+					 "The Outgoing Phone Number required by the Redirector to the Twilio service.",
+					 10, 2, OPCProperty.Base + 57, Length = 80)]
+		public string FromNumber;
+
+		[Label("Allow Acknowledge", 11, 1)]
+		[ConfigField("AllowAck", "Controls whether alarms can be acknowledged.", 11, 2, OPCProperty.Base + 18)]
 		public Boolean AllowAck = true;
 
 		public override void OnValidateConfig(MessageInfo Errors)

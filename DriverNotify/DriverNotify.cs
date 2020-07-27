@@ -400,13 +400,26 @@ namespace DriverNotify
 						string MessageType = (string)Transaction.get_Args(2);
 						string CookieStr = (string)Transaction.get_Args(3);
 
+						// Security - only allow a flow URL to a legitimate Twilio address
+						if ( !this.DBScanner.FlowID.StartsWith("https://studio.twilio.com/"))
+						{
+							((DrvNotifyChannel)this.Channel).LogAndEvent("Invalid flow URL, must start with https://studio.twilio.com/");
+							this.CompleteTransaction(Transaction, 0, "Invalid flow URL, must start with https://studio.twilio.com/");
+							break;
+						}
+
 						((DrvNotifyChannel)this.Channel).LogAndEvent("Notify Message to: " + PhoneNumber + " using " + MessageType + " cookie " + CookieStr);
 
 						using (WebClient client = new WebClient())
 						{
 							((DrvNotifyChannel)this.Channel).LogAndEvent("Send Request" );
 							string requestaddress = WebServerAddress() + "/NotifyRequest/";
-							string requestparams = "?key=" + WebUtility.UrlEncode( this.DBScanner.APIKey) + 
+							string requestparams = "?APIKey=" + WebUtility.UrlEncode( this.DBScanner.APIKey) +
+
+													"&AccountSID=" + WebUtility.UrlEncode(this.DBScanner.AccountSID) +
+													"&FlowID=" + WebUtility.UrlEncode(this.DBScanner.FlowID) +
+													"&FromNumber=" + WebUtility.UrlEncode(this.DBScanner.FromNumber) +
+
 													"&phone=" + WebUtility.UrlEncode( PhoneNumber) + 
 													"&message=" + WebUtility.UrlEncode( Message) +
 													"&type=" + WebUtility.UrlEncode( MessageType ) +
@@ -449,6 +462,7 @@ namespace DriverNotify
 					break;
 
 #if FEATURE_ALARM_ACK
+				// Acknowledge alarm and check whether it was successful
 				case OPCProperty.DriverActionTestAlarmAck:
 
 					string UserId = (string)Transaction.get_Args(0);

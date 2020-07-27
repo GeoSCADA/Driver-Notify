@@ -11,10 +11,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redirector", "Redirector\Re
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15396A02-6C4C-423F-8F23-2B3D29494F3D}"
 	ProjectSection(SolutionItems) = preProject
+		DemoTwilioFlowV1.json = DemoTwilioFlowV1.json
 		LICENSE.txt = LICENSE.txt
 		NotifyDemo Description.pptx = NotifyDemo Description.pptx
 		ReadMe.md = ReadMe.md
 	EndProjectSection
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RedirectorInstaller", "RedirectorInstaller\RedirectorInstaller.wixproj", "{746264F7-EE9B-4146-93C6-D857118BFC23}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "DriverNotifyInstaller", "DriverNotifyInstaller\DriverNotifyInstaller.wixproj", "{432264F7-EE9B-4146-93C6-D857118BFF75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +63,22 @@ Global
 		{6C3DB632-8BBC-4F96-BEB5-A37986A24A98}.Release|x64.Build.0 = Release|Any CPU
 		{6C3DB632-8BBC-4F96-BEB5-A37986A24A98}.Release|x86.ActiveCfg = Release|Any CPU
 		{6C3DB632-8BBC-4F96-BEB5-A37986A24A98}.Release|x86.Build.0 = Release|Any CPU
+		{746264F7-EE9B-4146-93C6-D857118BFC23}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{746264F7-EE9B-4146-93C6-D857118BFC23}.Debug|x64.ActiveCfg = Debug|x86
+		{746264F7-EE9B-4146-93C6-D857118BFC23}.Debug|x86.ActiveCfg = Debug|x86
+		{746264F7-EE9B-4146-93C6-D857118BFC23}.Debug|x86.Build.0 = Debug|x86
+		{746264F7-EE9B-4146-93C6-D857118BFC23}.Release|Any CPU.ActiveCfg = Release|x86
+		{746264F7-EE9B-4146-93C6-D857118BFC23}.Release|x64.ActiveCfg = Release|x86
+		{746264F7-EE9B-4146-93C6-D857118BFC23}.Release|x86.ActiveCfg = Release|x86
+		{746264F7-EE9B-4146-93C6-D857118BFC23}.Release|x86.Build.0 = Release|x86
+		{432264F7-EE9B-4146-93C6-D857118BFF75}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{432264F7-EE9B-4146-93C6-D857118BFF75}.Debug|x64.ActiveCfg = Debug|x86
+		{432264F7-EE9B-4146-93C6-D857118BFF75}.Debug|x86.ActiveCfg = Debug|x86
+		{432264F7-EE9B-4146-93C6-D857118BFF75}.Debug|x86.Build.0 = Debug|x86
+		{432264F7-EE9B-4146-93C6-D857118BFF75}.Release|Any CPU.ActiveCfg = Release|x86
+		{432264F7-EE9B-4146-93C6-D857118BFF75}.Release|x64.ActiveCfg = Release|x86
+		{432264F7-EE9B-4146-93C6-D857118BFF75}.Release|x86.ActiveCfg = Release|x86
+		{432264F7-EE9B-4146-93C6-D857118BFF75}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
