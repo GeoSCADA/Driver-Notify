@@ -235,9 +235,10 @@ namespace Notify
 
 		// The Flow ID is used to identify the flow we want to run.
 		// You will need to replicate and/or customise the example flow in Twilio (see the ReadMe pdf linked with this code)
-		// This flow is a message sender with optional with acknowledgement from the user		[Label("Flow ID", 9, 1)]
+		// This flow is a message sender with optional with acknowledgement from the user
+		[Label("Flow ID", 9, 1)]
 		[ConfigField("FlowID",
-					 "The Flow ID/address (must begin https://studio.twilio.com/) required by the Redirector to the Twilio service.",
+					 "The Flow ID or address (must begin https://studio.twilio.com/) required by the Redirector to the Twilio service.",
 					 9, 2, OPCProperty.Base + 56, Length = 80)]
 		public string FlowID;
 

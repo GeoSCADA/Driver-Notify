@@ -43,7 +43,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -53,7 +53,7 @@
     <Optimize>true</Optimize>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -79,10 +79,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClearScada.Client">
-      <HintPath>..\..\ClearSCADA\Binaries\X64\Release\ClearScada.Client.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Dev\ClearSCADA\Binaries\X64\Release\ClearScada.Client.dll</HintPath>
     </Reference>
     <Reference Include="ControlMicrosystems.ClearSCADA.DDK">
-      <HintPath>..\..\ClearSCADA\Binaries\X64\Release\ControlMicrosystems.ClearSCADA.DDK.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Dev\ClearSCADA\Binaries\X64\Release\ControlMicrosystems.ClearSCADA.DDK.dll</HintPath>
     </Reference>
     <Reference Include="Notify">
       <HintPath>..\Notify\bin\x64\Release\Notify.dll</HintPath>
@@ -132,13 +132,10 @@
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetDir)\Notify.dll C:\Dev\ClearSCADA\Binaries\X64\Debug\
 copy $(TargetDir)\Notify.dll C:\Dev\ClearSCADA\Binaries\X64\Release\
-
 copy $(TargetDir)\Notify.PDB C:\Dev\ClearSCADA\Binaries\X64\Debug\
 copy $(TargetDir)\Notify.PDB C:\Dev\ClearSCADA\Binaries\X64\Release\
-
 copy $(TargetPath) C:\Dev\ClearSCADA\Binaries\X64\Debug\
 copy $(TargetPath) C:\Dev\ClearSCADA\Binaries\X64\Release\
-
 copy $(TargetDir)\DriverNotify.PDB C:\Dev\ClearSCADA\Binaries\X64\Debug\
 copy $(TargetDir)\DriverNotify.PDB C:\Dev\ClearSCADA\Binaries\X64\Release\
 </PostBuildEvent>
