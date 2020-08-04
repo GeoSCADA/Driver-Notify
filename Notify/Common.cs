@@ -5,7 +5,7 @@ namespace Notify
 {
 	public class OPCProperty
 	{
-		public const UInt32 Base = 0x04608000;
+		public const UInt32 Base = 0x0468C000;
 
 		// Channel
 		// RendRecs

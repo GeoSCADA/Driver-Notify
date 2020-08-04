@@ -10,3 +10,9 @@ security measures for your environment.
 Please read the Powerpoint file NotifyDemo Description.pptx for a guide
 to customization and implementation.
 
+Other notes:
+1. The OPC number range has changed for this new GitHub site, if you
+rebuild with this source then objects will need to be reconfigured.
+
+
+
