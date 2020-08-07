@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <Product Id="32d4ad2d-e174-45c5-b7f7-475f0dd88a31" Name="DriverNotifyInstaller" Language="1033" Version="1.0.0.0" 
+  <Product Id="32d4ad2d-e174-45c5-b7f7-475f0dd88a31" Name="Notify Driver" Language="1033" Version="1.0.0.0" 
             Manufacturer="Schneider Electric" UpgradeCode="75ddcd57-1f62-4b15-9c92-ec69ae80ab5a">
-    <Package InstallerVersion="200" Compressed="yes" InstallPrivileges="elevated" InstallScope="perMachine" />
-    <MajorUpgrade DowngradeErrorMessage="A newer version of Notify Driver is already installed." />
+    <Package InstallerVersion="200" Compressed="yes" InstallPrivileges="elevated" InstallScope="perMachine" Platform="x64" />
+    <MajorUpgrade DowngradeErrorMessage="A newer or same version of Notify Driver is already installed." />
     <Media Id='1' Cabinet='RWS.cab' EmbedCab='yes' />
     <Feature Id='Complete' Level='1' ConfigurableDirectory='INSTALLDIR'>
       <ComponentRef Id="DRIVERPROCESS" />
@@ -14,14 +14,19 @@
     </UI>
     
     <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
+      <Directory Id="ProgramFiles64Folder">
         <Directory Id="SchneiderElectricFolder" Name="Schneider Electric">
-          <Directory Id="INSTALLDIR" Name="Notify Driver">
-            <Component Id="DRIVERDLLS" Guid="948AEE65-5195-4F43-B758-A9B27D29FA23">
-              <File Id="Notify.dll" Name="Notify.dll" Source="..\DriverNotify\bin\x64\Release\Notify.dll" />
+          <Directory Id="INSTALLDIR" Name="ClearSCADA">
+            <Component Id="DRIVERDLLS" Guid="948AEE65-5195-4F43-B758-A9B27D29FA23" Win64="yes">
+              <File Id="Notify.dll" Name="Notify.dll" Source="..\DriverNotify\bin\x64\Debug\Notify.dll" />
+              <RegistryKey Root="HKLM" Key="SOFTWARE\Schneider Electric\ClearSCADA\DriverNotify">
+                <RegistryValue Type="string" Value="Notify"/>
+                <RegistryValue Type="string" Name="AssemblyName" Value="C:\\Program Files\\Schneider Electric\\ClearSCADA\\Notify.dll" KeyPath="yes"/>
+                <RegistryValue Type="string" Name="TaskName" Value="DriverNotify.exe"/>
+              </RegistryKey>              
             </Component>
-            <Component Id="DRIVERPROCESS" Guid="644D59D3-B29F-458E-BBC5-8DF32FEE5232">
-              <File Id="DriverNotify.exe" Name="DriverNotify.exe" Source="..\DriverNotify\bin\x64\Release\DriverNotify.exe" />
+            <Component Id="DRIVERPROCESS" Guid="644D59D3-B29F-458E-BBC5-8DF32FEE5232" Win64="yes">
+              <File Id="DriverNotify.exe" Name="DriverNotify.exe" Source="..\DriverNotify\bin\x64\Debug\DriverNotify.exe" />
             </Component>
           </Directory>
         </Directory>

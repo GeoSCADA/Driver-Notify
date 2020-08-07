@@ -85,7 +85,7 @@
       <HintPath>..\..\..\..\..\..\Dev\ClearSCADA\Binaries\X64\Release\ControlMicrosystems.ClearSCADA.DDK.dll</HintPath>
     </Reference>
     <Reference Include="Notify">
-      <HintPath>..\Notify\bin\x64\Release\Notify.dll</HintPath>
+      <HintPath>..\Notify\bin\x64\Debug\Notify.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
