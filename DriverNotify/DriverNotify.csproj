@@ -79,13 +79,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClearScada.Client">
-      <HintPath>..\..\..\..\..\..\Dev\ClearSCADA\Binaries\X64\Release\ClearScada.Client.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Schneider Electric\ClearSCADA\ClearScada.Client.dll</HintPath>
     </Reference>
     <Reference Include="ControlMicrosystems.ClearSCADA.DDK">
       <HintPath>..\..\..\..\..\..\Dev\ClearSCADA\Binaries\X64\Release\ControlMicrosystems.ClearSCADA.DDK.dll</HintPath>
     </Reference>
     <Reference Include="Notify">
-      <HintPath>..\Notify\bin\x64\Debug\Notify.dll</HintPath>
+      <HintPath>..\Notify\bin\x86\Debug\Notify.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -130,14 +130,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetDir)\Notify.dll C:\Dev\ClearSCADA\Binaries\X64\Debug\
-copy $(TargetDir)\Notify.dll C:\Dev\ClearSCADA\Binaries\X64\Release\
-copy $(TargetDir)\Notify.PDB C:\Dev\ClearSCADA\Binaries\X64\Debug\
-copy $(TargetDir)\Notify.PDB C:\Dev\ClearSCADA\Binaries\X64\Release\
-copy $(TargetPath) C:\Dev\ClearSCADA\Binaries\X64\Debug\
-copy $(TargetPath) C:\Dev\ClearSCADA\Binaries\X64\Release\
-copy $(TargetDir)\DriverNotify.PDB C:\Dev\ClearSCADA\Binaries\X64\Debug\
-copy $(TargetDir)\DriverNotify.PDB C:\Dev\ClearSCADA\Binaries\X64\Release\
+    <PostBuildEvent>copy $(TargetDir)\Notify.dll "C:\Program Files\Schneider Electric\ClearSCADA"
+copy $(TargetDir)\Notify.PDB "C:\Program Files\Schneider Electric\ClearSCADA"
+copy $(TargetPath) "C:\Program Files\Schneider Electric\ClearSCADA"
+copy $(TargetDir)\DriverNotify.PDB "C:\Program Files\Schneider Electric\ClearSCADA"
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

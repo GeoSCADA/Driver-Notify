@@ -13,9 +13,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("MIT License")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblySupportLink("https://github.com/ClearSCADA")]
-[assembly: AssemblyHelpLink("")]
-[assembly: AssemblyUpdateInformation("https://github.com/ClearSCADA")]
+[assembly: AssemblySupportLink("https://github.com/GeoSCADA")]
+[assembly: AssemblyHelpLink("https://github.com/GeoSCADA")]
+[assembly: AssemblyUpdateInformation("https://github.com/GeoSCADA")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
