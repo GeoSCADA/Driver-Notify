@@ -21,7 +21,7 @@
               <File Id="Notify.dll" Name="Notify.dll" Source="..\DriverNotify\bin\x64\Debug\Notify.dll" />
               <RegistryKey Root="HKLM" Key="SOFTWARE\Schneider Electric\ClearSCADA\DriverNotify">
                 <RegistryValue Type="string" Value="Notify"/>
-                <RegistryValue Type="string" Name="AssemblyName" Value="C:\\Program Files\\Schneider Electric\\ClearSCADA\\Notify.dll" KeyPath="yes"/>
+                <RegistryValue Type="string" Name="AssemblyName" Value="C:\Program Files\Schneider Electric\ClearSCADA\Notify.dll" KeyPath="yes"/>
                 <RegistryValue Type="string" Name="TaskName" Value="DriverNotify.exe"/>
               </RegistryKey>              
             </Component>
