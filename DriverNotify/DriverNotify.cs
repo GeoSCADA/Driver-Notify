@@ -315,7 +315,8 @@ namespace DriverNotify
 			// Log on to the .Net Client API with these details
 			// This requires a Reference from the project to this dll
 			ClearScada.Client.Simple.Connection connection;
-			var node = new ClearScada.Client.ServerNode(ClearScada.Client.ConnectionType.Standard, "127.0.0.1", 5481);
+			// Older Geo SCADA var node = new ClearScada.Client.ServerNode(ClearScada.Client.ConnectionType.Standard, "127.0.0.1", 5481);
+			var node = new ClearScada.Client.ServerNode("127.0.0.1", 5481);
 			((DrvNotifyChannel)this.Channel).LogAndEvent("Acknowledge - connection created.");
 
 			connection = new ClearScada.Client.Simple.Connection("Notify");
