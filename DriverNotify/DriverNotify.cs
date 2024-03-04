@@ -315,9 +315,8 @@ namespace DriverNotify
 			// Log on to the .Net Client API with these details
 			// This requires a Reference from the project to this dll
 			ClearScada.Client.Simple.Connection connection;
-			// Older Geo SCADA var node = new ClearScada.Client.ServerNode(ClearScada.Client.ConnectionType.Standard, "127.0.0.1", 5481);
-			var node = new ClearScada.Client.ServerNode("127.0.0.1", 5481);
-			((DrvNotifyChannel)this.Channel).LogAndEvent("Acknowledge - connection created.");
+#pragma warning disable 612, 618
+			var node = new ClearScada.Client.ServerNode(ConnectionType.Standard, "127.0.0.1", 5481); ((DrvNotifyChannel)this.Channel).LogAndEvent("Acknowledge - connection created.");
 
 			connection = new ClearScada.Client.Simple.Connection("Notify");
 			try
@@ -335,6 +334,7 @@ namespace DriverNotify
 				((DrvNotifyChannel)this.Channel).LogAndEvent("Acknowledge - failed connection.");
 				return false;
 			}
+#pragma warning restore 612, 618
 			using (var spassword = new System.Security.SecureString())
 			{
 				foreach (var c in PIN)
